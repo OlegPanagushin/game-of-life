@@ -1,0 +1,58 @@
+.game {
+  padding: 40px;
+
+  @media screen and (max-width: 678px) {
+    padding: 8px;
+  }
+}
+
+.buttons {
+  display: flex;
+  margin-bottom: 16px;
+
+  @media screen and (max-width: 678px) {
+    flex-direction: column;
+  }
+
+  & > * {
+    margin-bottom: 4px;
+  }
+
+  button + button {
+    margin-left: 8px;
+
+    @media screen and (max-width: 678px) {
+      margin-left: 0px;
+    }
+  }
+}
+
+.input {
+  margin-left: 8px !important;
+
+  @media screen and (max-width: 678px) {
+    margin-left: 0px !important;
+  }
+}
+
+.gridWrapper {
+  max-width: 100%;
+  width: 800px;
+}
+
+.grid {
+  box-sizing: content-box;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;;
+}
+
+.cell {
+  border: 1px solid #c8c8c8;
+  box-sizing: border-box;
+  will-change: background-color;
+
+  &[data-alive="true"] {
+    background-color: black;
+  }
+}
