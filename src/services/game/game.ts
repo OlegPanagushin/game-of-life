@@ -11,11 +11,6 @@ export class GameService {
     this._updateGrid(this.grid, false)
   }
 
-  clean() {
-    this._stop()
-    delete this.onTick
-  }
-
   grid: TGrid = []
   private _history: TGrid[] = []
   private _stop: VoidFunction = () => {}
@@ -29,12 +24,19 @@ export class GameService {
     this.onTick(this.grid, this._history.length > 0)
   }
 
+  clean() {
+    this._stop()
+    delete this.onTick
+  }
+
   play() {
     const tick = () => {
       const { promise, clearDelay } = throttle(() => this.stepForward(), this.speed)
       this._stop = clearDelay
 
-      promise.then(tick).catch(() => {})
+      promise.then(tick).catch((err) => {
+        console.log(err)
+      })
     }
 
     tick()
